@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "sources": ["../common/models"]
+  },
+  "Todo": {
+    "dataSource": "db"
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  }
+
+}
