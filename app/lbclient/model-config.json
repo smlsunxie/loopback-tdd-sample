@@ -8,7 +8,7 @@
   "LocalTodo": {
     "dataSource": "local"
   },
-  "user": {
+  "User": {
     "dataSource": "remote"
   }
 }
