@@ -42,3 +42,23 @@ describe "User", ->
         user = @res.body[0]
         user.should.be.Object
         user.should.be.have.property "username"
+
+  describe.skip 'facebook', ->
+    it "user create has token", (done) ->
+
+      User.create {
+        username: "testOnlyUser"
+      }, (error, user) ->
+
+        user.should.be.have.property "token"
+        user.should.be.have.property "fb_userid"
+        done()
+
+
+
+    it "get friends", (done) ->
+      User.find {where: {username: "testOnlyUser"}}, (error, testOnlyUser) ->
+        userid = testOnlyUser[0].id
+        User.getFriends testOnlyUser[0].id, (error, friends) ->
+          friends.should.be.Array
+          friend = friends[0]
