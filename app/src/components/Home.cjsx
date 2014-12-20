@@ -3,7 +3,8 @@ Home = React.createClass(
   getInitialState: ->
 
     self = this
-    client.models.User.find username: "testuser", (error, friends) ->
+    # client.models.User.find username: "testuser", (error, friends) ->
+    client.models.User.getFriends "1", (error, friends) ->
       self.setState friends: friends
 
     return {
@@ -19,7 +20,7 @@ Home = React.createClass(
     displayFriends = (friend) ->
       <tr>
         <td>{friend.id}</td>
-        <td>{friend.username}</td>
+        <td>{friend.name}</td>
       </tr>
 
 

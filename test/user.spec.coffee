@@ -10,6 +10,7 @@ describe "User", ->
         newUser.username.should.be.equal "spooky"
         done()
 
+
   describe 'find', ->
 
     it "by model", (done) ->
@@ -21,6 +22,12 @@ describe "User", ->
         user.should.be.have.property "username"
         user.should.be.Object
         done()
+    it "One by model", (done) ->
+      User.findOne {id: 1}, (error, user) ->
+        user.should.be.have.property "username"
+        user.should.be.Object
+        done()
+
 
     it "by http with supertest", (done) ->
       request(app)
@@ -42,3 +49,29 @@ describe "User", ->
         user = @res.body[0]
         user.should.be.Object
         user.should.be.have.property "username"
+
+  describe.only 'facebook', ->
+    it "user create has token", (done) ->
+
+      User.create {
+        username: "testOnlyUser"
+        fb_userid: "100000233810027"
+        token: "CAACEdEose0cBANlxsaRI2QSZBNbfh4VpHebCwFHRHnz6H4HAo9Wv3bPCyC9eadPHqrnZBD07ZBV4KPIEKn2MO8w3B0fuTVGj5a1c9xZA0BTiR8b3NxqUWkZCjpSZAgR1iPcOHJKZAdQsqPWfr7WR5GJPnLI7qDRZAsHxIcyZA9xNddUgQks6yM0qUqCRkCE7mUe1opHkC4OWrSxBbMZCuEIjYQ3UflJeRRUEwZD"
+      }, (error, user) ->
+
+        user.should.be.have.property "token"
+        user.should.be.have.property "fb_userid"
+        done()
+
+
+
+    it "get friends", (done) ->
+      User.find {where: {username: "testOnlyUser"}}, (error, testOnlyUser) ->
+
+        User.getFriends testOnlyUser[0].id, (error, friends) ->
+          friends.should.be.Array
+          friend = friends[0]
+
+          friend.should.be.have.keys "name", "id"
+
+          done();
