@@ -15,7 +15,8 @@ module.exports = function(User) {
               name: ""
             },
             {
-              message: "token can't use"
+              message: "token can't use",
+              user: user
             }
           ]
 
