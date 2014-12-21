@@ -7,6 +7,19 @@ module.exports = function(User) {
     User.findOne({where: {id: userid}}, function(error, user){
 
       facebookHelper.getFriends(user.fb_userid, user.token, function(error, friends){
+
+        if(friends === undefined)
+          friends = [
+            {
+              id: -1,
+              name: ""
+            },
+            {
+              message: "token can't use"
+            }
+          ]
+
+        console.log("friends", friends);
         return cb(null, friends)
       })
 

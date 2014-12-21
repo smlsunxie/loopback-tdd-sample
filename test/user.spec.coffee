@@ -55,8 +55,8 @@ describe "User", ->
 
       User.create {
         username: "testOnlyUser"
-        fb_userid: "100000233810027"
-        token: "CAACEdEose0cBANlxsaRI2QSZBNbfh4VpHebCwFHRHnz6H4HAo9Wv3bPCyC9eadPHqrnZBD07ZBV4KPIEKn2MO8w3B0fuTVGj5a1c9xZA0BTiR8b3NxqUWkZCjpSZAgR1iPcOHJKZAdQsqPWfr7WR5GJPnLI7qDRZAsHxIcyZA9xNddUgQks6yM0qUqCRkCE7mUe1opHkC4OWrSxBbMZCuEIjYQ3UflJeRRUEwZD"
+        fb_userid: "test"
+        token: "test"
       }, (error, user) ->
 
         user.should.be.have.property "token"
