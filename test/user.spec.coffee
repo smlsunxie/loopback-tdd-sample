@@ -50,7 +50,7 @@ describe "User", ->
         user.should.be.Object
         user.should.be.have.property "username"
 
-  describe.only 'facebook', ->
+  describe 'facebook', ->
     it "user create has token", (done) ->
 
       User.create {
