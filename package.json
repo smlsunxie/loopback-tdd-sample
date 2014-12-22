@@ -13,8 +13,8 @@
   },
   "scripts": {
     "start": "coffee server/server.coffee",
-    "test": "grunt test",
-    "build": "bower install; grunt build"
+    "test": "mocha test/",
+    "build": "bower install; gulp build"
   },
   "repository": {
     "type": "git",
